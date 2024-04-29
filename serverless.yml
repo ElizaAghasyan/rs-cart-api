@@ -1,0 +1,31 @@
+service: my-nest-app
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    NODE_ENV: 'production'
+    DB_HOST:  process.env.DB_HOST
+    DB_PORT: '5432'
+    DB_USERNAME: process.env.USER_NAME
+    DB_PASSWORD: process.env.PASSWORD
+    DB_DATABASE: process.env.DB
+  lambdaHashingVersion: 20201221
+
+functions:
+  app:
+    handler: dist/main.lambdaHandler
+    events:
+      - http:
+          path: /
+          method: any
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+package:
+  exclude:
+    - node_modules/**
+    - .git/**
