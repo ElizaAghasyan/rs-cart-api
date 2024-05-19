@@ -21,6 +21,15 @@ functions:
           path: /
           method: any
 
+  getCart:
+    handler: dist/main.getCart
+    environment:
+      DB_USER: ${self:provider.environment.DB_USER}
+      DB_HOST: ${self:provider.environment.DB_HOST}
+      DB_NAME: ${self:provider.environment.DB_NAME}
+      DB_PASSWORD: ${self:provider.environment.DB_PASSWORD}
+      DB_PORT: ${self:provider.environment.DB_PORT}
+
 plugins:
   - serverless-plugin-typescript
   - serverless-offline

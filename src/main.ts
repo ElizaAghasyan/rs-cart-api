@@ -5,7 +5,20 @@ import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { Handler } from 'aws-lambda';
 import  ServerlessAdapter  from '@vendia/serverless-express';
+import { createConnection } from "typeorm";
 
+createConnection({
+  type: "postgres",
+  host: process.env.HOST,
+  port: parseInt(process.env.PORT), // convert string to number
+  username: process.env.USER_NAME,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE_NAME,
+  entities: [],
+  synchronize: true,
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+}).then(connection => {
+}).catch(error => console.log(error));
 
 const port = process.env.PORT || 4000;
 let server: Handler;

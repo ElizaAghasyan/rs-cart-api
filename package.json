@@ -35,7 +35,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^8.11.5",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.1.14",
     "rxjs": "^6.5.4",
     "serverless-offline": "^13.5.0",
     "serverless-plugin-typescript": "^2.1.5",
